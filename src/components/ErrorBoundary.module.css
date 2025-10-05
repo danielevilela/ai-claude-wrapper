@@ -1,0 +1,118 @@
+.errorBoundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--error-boundary-bg);
+}
+
+.errorContent {
+  max-width: 500px;
+  text-align: center;
+  padding: 2rem;
+  background: var(--error-content-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--error-content-border);
+  box-shadow: 0 4px 6px -1px var(--error-content-shadow);
+}
+
+.errorContent h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--error-title-color);
+  margin-bottom: 1rem;
+}
+
+.errorContent p {
+  color: var(--error-text-color);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.errorDetails {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--error-details-bg);
+  border-radius: 0.5rem;
+  border: 1px solid var(--error-details-border);
+}
+
+.errorDetails summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--error-details-summary);
+  margin-bottom: 0.5rem;
+}
+
+.errorDetails pre {
+  font-size: 0.875rem;
+  color: var(--error-details-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  padding-top: 0.5rem;
+}
+
+.errorActions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retryButton,
+.refreshButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.retryButton {
+  background: var(--retry-button-bg);
+  color: var(--retry-button-text);
+  border: 1px solid var(--retry-button-border);
+}
+
+.retryButton:hover {
+  background: var(--retry-button-hover-bg);
+}
+
+.refreshButton {
+  background: var(--refresh-button-bg);
+  color: var(--refresh-button-text);
+  border: 1px solid var(--refresh-button-border);
+}
+
+.refreshButton:hover {
+  background: var(--refresh-button-hover-bg);
+}
+
+
+
+@media (max-width: 640px) {
+  .errorBoundary {
+    padding: 1rem;
+  }
+  
+  .errorContent {
+    padding: 1.5rem;
+  }
+  
+  .errorContent h2 {
+    font-size: 1.25rem;
+  }
+  
+  .errorActions {
+    flex-direction: column;
+  }
+  
+  .retryButton,
+  .refreshButton {
+    width: 100%;
+  }
+}

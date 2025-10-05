@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: var(--black-background);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+
+  /* Black Theme with Purple Accents */
+  --black-background: #000000;
+  --dark-card: #1a1a1a;
+  --darker-card: #0f0f0f;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --purple-primary: #8b5cf6;
+  --purple-hover: #7c3aed;
+  --purple-light: #a855f7;
+  --border-color: #333333;
+  --border-light: #444444;
+
+  /* Chat Message Variables - Black Theme */
+  --message-bg: var(--dark-card);
+  --message-border: var(--border-color);
+  --user-message-bg: var(--purple-primary);
+  --user-message-text: white;
+  --user-message-border: var(--purple-hover);
+  --assistant-message-bg: var(--dark-card);
+  --assistant-message-text: var(--text-primary);
+  --assistant-message-border: var(--border-color);
+
+  /* Chat Input Variables - Black Theme */
+  --input-form-bg: var(--black-background);
+  --input-form-border: var(--border-color);
+  --input-container-bg: var(--dark-card);
+  --input-container-border: var(--border-color);
+  --input-focus-border: var(--purple-primary);
+  --input-focus-shadow: rgba(139, 92, 246, 0.3);
+  --input-text: var(--text-primary);
+  --input-placeholder: var(--text-secondary);
+  --send-button-bg: var(--purple-primary);
+  --send-button-text: white;
+  --send-button-hover-bg: var(--purple-hover);
+  --send-button-disabled-bg: var(--border-color);
+  --send-button-disabled-text: var(--text-secondary);
+  --character-count-text: var(--text-secondary);
+
+  /* Chat History Variables - Black Theme */
+  --scrollbar-bg: transparent;
+  --scrollbar-hover-bg: rgba(255, 255, 255, 0.05);
+  --scrollbar-thumb-bg: rgba(139, 92, 246, 0.3);
+  --scrollbar-thumb-hover-bg: rgba(139, 92, 246, 0.5);
+  --empty-state-title: var(--text-primary);
+  --empty-state-text: var(--text-secondary);
+  --scroll-button-bg: var(--dark-card);
+  --scroll-button-text: var(--text-primary);
+  --scroll-button-shadow: rgba(0, 0, 0, 0.8);
+  --scroll-button-hover-bg: var(--border-light);
+
+  /* Error Boundary Variables - Black Theme */
+  --error-boundary-bg: var(--black-background);
+  --error-content-bg: var(--dark-card);
+  --error-content-border: var(--border-color);
+  --error-content-shadow: rgba(0, 0, 0, 0.8);
+  --error-title-color: var(--text-primary);
+  --error-text-color: #ff6b6b;
+  --error-details-bg: var(--darker-card);
+  --error-details-border: var(--border-color);
+  --error-details-summary: var(--purple-primary);
+  --error-details-text: var(--text-primary);
+  --retry-button-bg: var(--purple-primary);
+  --retry-button-text: white;
+  --retry-button-border: var(--purple-primary);
+  --retry-button-hover-bg: var(--purple-hover);
+  --refresh-button-bg: transparent;
+  --refresh-button-text: var(--text-secondary);
+  --refresh-button-border: var(--border-color);
+  --refresh-button-hover-bg: var(--dark-card);
+
+  /* Page Variables - Black Theme */
+  --chat-container-bg: var(--black-background);
+  --chat-header-bg: var(--darker-card);
+  --chat-header-border: var(--border-color);
+  --chat-header-title: var(--text-primary);
+  --chat-header-subtitle: var(--purple-primary);
+  --error-bg: rgba(255, 107, 107, 0.1);
+  --error-border: #ff6b6b;
+  --error-text: #ff6b6b;
+  --error-button-border: #ff6b6b;
+  --error-button-text: #ff6b6b;
+  --error-button-hover-bg: rgba(255, 107, 107, 0.1);
+}
+
+/* Dracula theme is applied by default and remains consistent */

@@ -1,0 +1,112 @@
+.chatInputForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--input-form-bg);
+  border-top: 1px solid var(--input-form-border);
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--input-container-bg);
+  border: 1px solid var(--input-container-border);
+  border-radius: 1.5rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.inputContainer:focus-within {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 2px var(--input-focus-shadow);
+}
+
+.messageInput {
+  flex: 1;
+  min-height: 1.5rem;
+  max-height: 120px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--input-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: none;
+  font-family: inherit;
+}
+
+.messageInput::placeholder {
+  color: var(--input-placeholder);
+}
+
+.messageInput.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sendButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--send-button-bg);
+  color: var(--send-button-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sendButton:hover:not(:disabled) {
+  background: var(--send-button-hover-bg);
+  transform: scale(1.05);
+}
+
+.sendButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.sendButtonDisabled {
+  background: var(--send-button-disabled-bg);
+  color: var(--send-button-disabled-text);
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.sendIcon {
+  width: 1rem;
+  height: 1rem;
+  transform: translateX(1px); /* Slight visual adjustment */
+}
+
+.characterCount {
+  font-size: 0.75rem;
+  color: var(--character-count-text);
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+
+
+@media (max-width: 768px) {
+  .chatInputForm {
+    padding: 0.75rem;
+  }
+  
+  .inputContainer {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .messageInput {
+    font-size: 0.875rem;
+  }
+  
+  .sendButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}

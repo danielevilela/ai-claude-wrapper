@@ -1,0 +1,113 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--chat-container-bg);
+}
+
+.chatHeader {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--chat-header-border);
+  background: var(--chat-header-bg);
+  text-align: center;
+}
+
+.chatHeader h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--chat-header-title);
+  margin-bottom: 0.5rem;
+}
+
+.chatHeader p {
+  color: var(--chat-header-subtitle);
+  font-size: 0.975rem;
+}
+
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin: 1rem;
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 0.5rem;
+  color: var(--error-text);
+  font-size: 0.875rem;
+}
+
+.errorMessage p {
+  margin: 0;
+  flex: 1;
+}
+
+.dismissError {
+  background: transparent;
+  border: 1px solid var(--error-button-border);
+  color: var(--error-button-text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
+}
+
+.dismissError:hover {
+  background: var(--error-button-hover-bg);
+}
+
+
+
+@media (max-width: 768px) {
+  .chatContainer {
+    height: 100vh;
+    max-width: 100%;
+  }
+  
+  .chatHeader {
+    padding: 1rem 1.5rem;
+  }
+  
+  .chatHeader h1 {
+    font-size: 1.5rem;
+  }
+  
+  .chatHeader p {
+    font-size: 0.875rem;
+  }
+  
+  .errorMessage {
+    margin: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .dismissError {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatHeader {
+    padding: 0.75rem 1rem;
+  }
+  
+  .chatHeader h1 {
+    font-size: 1.25rem;
+  }
+}

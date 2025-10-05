@@ -1,0 +1,129 @@
+.chatHistoryContainer {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scrollRoot {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scrollViewport {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: flex-end;
+}
+
+.scrollScrollbar {
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: 2px;
+  background: var(--scrollbar-bg);
+  transition: background 160ms ease-out;
+  width: 8px;
+}
+
+.scrollScrollbar:hover {
+  background: var(--scrollbar-hover-bg);
+  width: 12px;
+}
+
+.scrollThumb {
+  flex: 1;
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 10px;
+  position: relative;
+  transition: background 160ms ease-out;
+}
+
+.scrollThumb:hover {
+  background: var(--scrollbar-thumb-hover-bg);
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.emptyStateContent {
+  text-align: center;
+  max-width: 400px;
+}
+
+.emptyStateContent h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--empty-state-title);
+  margin-bottom: 0.5rem;
+}
+
+.emptyStateContent p {
+  color: var(--empty-state-text);
+  line-height: 1.6;
+}
+
+.scrollToBottomButton {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--scroll-button-bg);
+  color: var(--scroll-button-text);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--scroll-button-shadow);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.scrollToBottomButton:hover {
+  background: var(--scroll-button-hover-bg);
+  transform: scale(1.1);
+}
+
+.scrollToBottomButton:active {
+  transform: scale(0.95);
+}
+
+
+
+@media (max-width: 768px) {
+  .scrollViewport {
+    padding: 0.75rem;
+  }
+  
+  .emptyState {
+    padding: 1.5rem;
+  }
+  
+  .emptyStateContent h2 {
+    font-size: 1.25rem;
+  }
+  
+  .scrollToBottomButton {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
