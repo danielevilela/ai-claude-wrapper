@@ -16,19 +16,19 @@ export function ChatInput({
   onSendMessage,
   isLoading = false,
   disabled = false,
-  placeholder = 'Type your message...'
+  placeholder = 'Type your message...',
 }: ChatInputProps) {
   const [message, setMessage] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    
+
     if (!message.trim() || isLoading || disabled) return
 
     onSendMessage(message.trim())
     setMessage('')
-    
+
     // Reset textarea height
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto'
@@ -69,13 +69,14 @@ export function ChatInput({
           maxLength={10000}
         />
         <button
-          type="submit"
+          type='submit'
           disabled={!message.trim() || isLoading || disabled}
           className={cn(
             styles.sendButton,
-            (!message.trim() || isLoading || disabled) && styles.sendButtonDisabled
+            (!message.trim() || isLoading || disabled) &&
+              styles.sendButtonDisabled
           )}
-          aria-label="Send message"
+          aria-label='Send message'
         >
           <PaperPlaneIcon className={styles.sendIcon} />
         </button>

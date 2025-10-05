@@ -33,69 +33,82 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const sendMessage = useCallback(async (content: string) => {
-    if (isLoading) return
+  const sendMessage = useCallback(
+    async (content: string) => {
+      if (isLoading) return
 
-    // Create user message
-    const userMessage: ChatMessage = {
-      id: generateId(),
-      role: 'user',
-      content,
-      timestamp: new Date(),
-    }
-
-    // Add user message to conversation
-    setMessages(prev => [...prev, userMessage])
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      // Send request to API
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: content,
-          conversationHistory: messages,
-        }),
-      })
-
-      const result: ChatApiResponse = await response.json()
-
-      if (!result.success || !result.data) {
-        throw new Error(result.error?.message || 'Failed to send message')
+      // Create user message
+      const userMessage: ChatMessage = {
+        id: generateId(),
+        role: 'user',
+        content,
+        timestamp: new Date(),
       }
 
-      // Add Claude's response to conversation
-      const assistantMessage: ChatMessage = {
-        id: result.data.message.id,
-        role: 'assistant',
-        content: result.data.message.content,
-        timestamp: new Date(result.data.message.timestamp),
+      // Add user message to conversation
+      setMessages(prev => [...prev, userMessage])
+      setIsLoading(true)
+      setError(null)
+
+      try {
+        // Send request to API
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: content,
+            conversationHistory: messages,
+          }),
+        })
+
+        const result: ChatApiResponse = await response.json()
+
+        if (!result.success || !result.data) {
+          throw new Error(result.error?.message || 'Failed to send message')
+        }
+
+        // Add Claude's response to conversation
+        const assistantMessage: ChatMessage = {
+          id: result.data.message.id,
+          role: 'assistant',
+          content: result.data.message.content,
+          timestamp: new Date(result.data.message.timestamp),
+        }
+
+        setMessages(prev => [...prev, assistantMessage])
+      } catch (err) {
+        console.error('Chat error:', err)
+        const errorMessage =
+          err instanceof Error ? err.message : 'An unexpected error occurred'
+        setError(errorMessage)
+
+        // Add an error message instead of removing the user message
+        const errorResponse: ChatMessage = {
+          id: generateId(),
+          role: 'assistant',
+          content: `❌ Sorry, I couldn't process your message: ${errorMessage}\n\n💡 This might be due to API credits or network issues. Your message has been saved in the chat history.`,
+          timestamp: new Date(),
+        }
+
+        setMessages(prev => [...prev, errorResponse])
+      } finally {
+        setIsLoading(false)
       }
-
-      setMessages(prev => [...prev, assistantMessage])
-
-    } catch (err) {
-      console.error('Chat error:', err)
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred')
-      
-      // Remove the user message if there was an error
-      setMessages(prev => prev.slice(0, -1))
-    } finally {
-      setIsLoading(false)
-    }
-  }, [messages, isLoading])
+    },
+    [messages, isLoading]
+  )
 
   // Create loading message for display
-  const loadingMessage: ChatMessage | undefined = isLoading ? {
-    id: 'loading',
-    role: 'assistant',
-    content: '',
-    timestamp: new Date(),
-  } : undefined
+  const loadingMessage: ChatMessage | undefined = isLoading
+    ? {
+        id: 'loading',
+        role: 'assistant',
+        content: '',
+        timestamp: new Date(),
+      }
+    : undefined
 
   return (
     <main className={styles.chatContainer}>
@@ -105,16 +118,16 @@ export default function Home() {
       </header>
 
       <div className={styles.chatContent}>
-        <ChatHistory 
+        <ChatHistory
           messages={messages}
           isLoading={isLoading}
           loadingMessage={loadingMessage}
         />
-        
+
         {error && (
           <div className={styles.errorMessage}>
             <p>Error: {error}</p>
-            <button 
+            <button
               onClick={() => setError(null)}
               className={styles.dismissError}
             >
@@ -122,11 +135,11 @@ export default function Home() {
             </button>
           </div>
         )}
-        
-        <ChatInput 
+
+        <ChatInput
           onSendMessage={sendMessage}
           isLoading={isLoading}
-          placeholder="Ask Claude anything..."
+          placeholder='Ask Claude anything...'
         />
       </div>
     </main>

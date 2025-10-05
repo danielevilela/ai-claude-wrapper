@@ -51,6 +51,21 @@ This is a modern web application built with the following technology stack:
 - Use TypeScript's strict mode for maximum type safety
 - Implement proper error handling and loading states
 - Follow React best practices for hooks and state management
+- Run `npm run lint` to check for code quality issues
+- Use `npm run lint:fix` to automatically fix linting problems
+- Run `npm run format` to format code with Prettier
+- Use `npm run format:check` to check if code is properly formatted
+- Maintain consistent code formatting and style guidelines
+
+### Code Formatting (Prettier)
+
+- **Consistent Style**: All code should follow Prettier formatting rules
+- **No Semicolons**: Use ASI (Automatic Semicolon Insertion) - no trailing semicolons
+- **Single Quotes**: Use single quotes for strings and JSX attributes
+- **Trailing Commas**: Include trailing commas in ES5-compatible contexts (objects, arrays)
+- **Line Width**: Keep lines under 80 characters when possible
+- **Indentation**: Use 2 spaces for indentation (no tabs)
+- **Arrow Functions**: Use concise arrow function syntax (`x => x` not `(x) => x`)
 
 ### Next.js Specific
 
@@ -70,3 +85,6 @@ When generating code for this project:
 5. Ensure accessibility is maintained when using Radix UI components
 6. Use modern React patterns (functional components, hooks)
 7. Implement proper error boundaries and loading states
+8. Format code according to Prettier rules: single quotes, no semicolons, trailing commas
+9. Keep line lengths reasonable (prefer under 80 characters)
+10. Use consistent indentation (2 spaces) and bracket spacing

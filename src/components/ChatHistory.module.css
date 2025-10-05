@@ -105,21 +105,19 @@
   transform: scale(0.95);
 }
 
-
-
 @media (max-width: 768px) {
   .scrollViewport {
     padding: 0.75rem;
   }
-  
+
   .emptyState {
     padding: 1.5rem;
   }
-  
+
   .emptyStateContent h2 {
     font-size: 1.25rem;
   }
-  
+
   .scrollToBottomButton {
     bottom: 0.75rem;
     right: 0.75rem;

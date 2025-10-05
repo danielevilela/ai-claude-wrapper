@@ -92,25 +92,23 @@
   background: var(--refresh-button-hover-bg);
 }
 
-
-
 @media (max-width: 640px) {
   .errorBoundary {
     padding: 1rem;
   }
-  
+
   .errorContent {
     padding: 1.5rem;
   }
-  
+
   .errorContent h2 {
     font-size: 1.25rem;
   }
-  
+
   .errorActions {
     flex-direction: column;
   }
-  
+
   .retryButton,
   .refreshButton {
     width: 100%;

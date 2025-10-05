@@ -50,7 +50,10 @@ export class ClaudeService {
       this.validateMessage(message)
 
       // Convert conversation history to Claude format
-      const messages = this.formatMessagesForClaude(conversationHistory, message)
+      const messages = this.formatMessagesForClaude(
+        conversationHistory,
+        message
+      )
 
       const response = await anthropic.messages.create({
         model: config.claude.model,
@@ -100,8 +103,8 @@ export class ClaudeService {
 
   private formatClaudeResponse(response: Anthropic.Message): ChatResponse {
     const content = response.content
-      .filter((block) => block.type === 'text')
-      .map((block) => (block as Anthropic.TextBlock).text)
+      .filter(block => block.type === 'text')
+      .map(block => (block as Anthropic.TextBlock).text)
       .join('')
 
     const assistantMessage: ChatMessage = {

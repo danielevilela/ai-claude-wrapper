@@ -9,7 +9,7 @@ interface ChatMessageProps {
 
 export function ChatMessage({ message, isLoading = false }: ChatMessageProps) {
   const isUser = message.role === 'user'
-  
+
   return (
     <div
       className={cn(
@@ -19,9 +19,7 @@ export function ChatMessage({ message, isLoading = false }: ChatMessageProps) {
     >
       <div className={styles.messageContent}>
         <div className={styles.messageHeader}>
-          <span className={styles.sender}>
-            {isUser ? 'You' : 'Claude'}
-          </span>
+          <span className={styles.sender}>{isUser ? 'You' : 'Claude'}</span>
           <span className={styles.timestamp}>
             {formatTimestamp(message.timestamp)}
           </span>

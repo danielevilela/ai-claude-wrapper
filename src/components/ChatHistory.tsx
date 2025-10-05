@@ -12,10 +12,10 @@ interface ChatHistoryProps {
   loadingMessage?: ChatMessageType
 }
 
-export function ChatHistory({ 
-  messages, 
-  isLoading = false, 
-  loadingMessage 
+export function ChatHistory({
+  messages,
+  isLoading = false,
+  loadingMessage,
 }: ChatHistoryProps) {
   const scrollAreaRef = useRef<HTMLDivElement>(null)
   const shouldAutoScrollRef = useRef(true)
@@ -23,7 +23,9 @@ export function ChatHistory({
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     if (shouldAutoScrollRef.current && scrollAreaRef.current) {
-      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]')
+      const scrollContainer = scrollAreaRef.current.querySelector(
+        '[data-radix-scroll-area-viewport]'
+      )
       if (scrollContainer) {
         scrollContainer.scrollTop = scrollContainer.scrollHeight
       }
@@ -40,11 +42,13 @@ export function ChatHistory({
   const scrollToBottom = () => {
     shouldAutoScrollRef.current = true
     if (scrollAreaRef.current) {
-      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]')
+      const scrollContainer = scrollAreaRef.current.querySelector(
+        '[data-radix-scroll-area-viewport]'
+      )
       if (scrollContainer) {
         scrollContainer.scrollTo({
           top: scrollContainer.scrollHeight,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       }
     }
@@ -70,7 +74,7 @@ export function ChatHistory({
           onScroll={handleScroll}
         >
           <div className={styles.messagesContainer}>
-            {messages.map((message) => (
+            {messages.map(message => (
               <ChatMessage key={message.id} message={message} />
             ))}
             {isLoading && loadingMessage && (
@@ -80,17 +84,17 @@ export function ChatHistory({
         </ScrollArea.Viewport>
         <ScrollArea.Scrollbar
           className={styles.scrollScrollbar}
-          orientation="vertical"
+          orientation='vertical'
         >
           <ScrollArea.Thumb className={styles.scrollThumb} />
         </ScrollArea.Scrollbar>
       </ScrollArea.Root>
-      
+
       {!shouldAutoScrollRef.current && (
         <button
           onClick={scrollToBottom}
           className={styles.scrollToBottomButton}
-          aria-label="Scroll to bottom"
+          aria-label='Scroll to bottom'
         >
           ↓
         </button>

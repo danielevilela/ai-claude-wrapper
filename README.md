@@ -27,37 +27,43 @@ A modern, responsive chat interface for Claude AI built with Next.js, TypeScript
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Claude API key from Anthropic
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/ai-claude-wrapper.git
    cd ai-claude-wrapper
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env.local
    ```
-   
+
    Edit `.env.local` and add your Claude API key:
+
    ```env
    CLAUDE_API_KEY=your_claude_api_key_here
+   CLAUDE_MODEL=claude-3-5-sonnet-20241022
    NODE_ENV=development
    NEXT_PUBLIC_APP_URL=http://localhost:3000
    PORT=3000
    ```
 
 4. **Start the development server**
+
    ```bash
    npm run dev
    ```
@@ -74,12 +80,13 @@ npm start
 
 ## Environment Variables
 
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `CLAUDE_API_KEY` | Your Anthropic Claude API key | Yes | - |
-| `NODE_ENV` | Environment mode | No | `development` |
-| `NEXT_PUBLIC_APP_URL` | Public URL of your app | No | - |
-| `PORT` | Port to run the server on | No | `3000` |
+| Variable              | Description                   | Required | Default             |
+| --------------------- | ----------------------------- | -------- | ------------------- |
+| `CLAUDE_API_KEY`      | Your Anthropic Claude API key | Yes      | -                   |
+| `CLAUDE_MODEL`        | Claude model to use for chat  | No       | `claude-3-5-sonnet-20241022` |
+| `NODE_ENV`            | Environment mode              | No       | `development`       |
+| `NEXT_PUBLIC_APP_URL` | Public URL of your app        | No       | -                   |
+| `PORT`                | Port to run the server on     | No       | `3000`              |
 
 ## API Endpoints
 
@@ -88,6 +95,7 @@ npm start
 Send a message to Claude and receive a response.
 
 **Request Body:**
+
 ```json
 {
   "message": "Hello, Claude!",
@@ -103,6 +111,7 @@ Send a message to Claude and receive a response.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -149,24 +158,28 @@ src/
 ## Component Architecture
 
 ### ChatMessage
+
 - Displays individual messages from user or Claude
 - Supports loading states with animated dots
 - Responsive design with proper spacing
 - CSS Modules for scoped styling
 
 ### ChatInput
+
 - Auto-resizing textarea for message input
 - Character count display
 - Submit on Enter (Shift+Enter for new line)
 - Loading and disabled states
 
 ### ChatHistory
+
 - Scrollable message container using Radix ScrollArea
 - Auto-scroll to bottom for new messages
 - Scroll-to-bottom button when scrolled up
 - Empty state for new conversations
 
 ### ErrorBoundary
+
 - Catches and displays React errors gracefully
 - Provides retry and refresh options
 - Detailed error information in development
@@ -180,14 +193,6 @@ The app uses a robust configuration system with Zod validation:
 - **API Settings**: Timeout and retry configuration
 - **Environment Flags**: Easy development/production/test detection
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -195,6 +200,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [Anthropic](https://www.anthropic.com/) for the Claude API
-- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives  
+- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives
 - [Next.js](https://nextjs.org/) for the React framework
 - [Zod](https://zod.dev/) for schema validation

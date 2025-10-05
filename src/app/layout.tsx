@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Claude Chat Wrapper',
-  description: 'A modern chat wrapper for Claude AI using Next.js and TypeScript',
+  description:
+    'A modern chat wrapper for Claude AI using Next.js and TypeScript',
 }
 
 export default function RootLayout({
@@ -16,11 +17,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
+        <ErrorBoundary>{children}</ErrorBoundary>
       </body>
     </html>
   )

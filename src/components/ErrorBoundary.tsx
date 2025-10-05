@@ -45,7 +45,8 @@ export class ErrorBoundary extends Component<Props, State> {
           <div className={styles.errorContent}>
             <h2>Something went wrong</h2>
             <p>
-              An unexpected error occurred in the application. Please try refreshing the page.
+              An unexpected error occurred in the application. Please try
+              refreshing the page.
             </p>
             {this.state.error && (
               <details className={styles.errorDetails}>
@@ -57,8 +58,8 @@ export class ErrorBoundary extends Component<Props, State> {
               <button onClick={this.handleReset} className={styles.retryButton}>
                 Try again
               </button>
-              <button 
-                onClick={() => window.location.reload()} 
+              <button
+                onClick={() => window.location.reload()}
                 className={styles.refreshButton}
               >
                 Refresh page

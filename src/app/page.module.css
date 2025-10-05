@@ -68,26 +68,24 @@
   background: var(--error-button-hover-bg);
 }
 
-
-
 @media (max-width: 768px) {
   .chatContainer {
     height: 100vh;
     max-width: 100%;
   }
-  
+
   .chatHeader {
     padding: 1rem 1.5rem;
   }
-  
+
   .chatHeader h1 {
     font-size: 1.5rem;
   }
-  
+
   .chatHeader p {
     font-size: 0.875rem;
   }
-  
+
   .errorMessage {
     margin: 0.75rem;
     padding: 0.5rem 0.75rem;
@@ -95,7 +93,7 @@
     gap: 0.5rem;
     align-items: flex-start;
   }
-  
+
   .dismissError {
     margin-left: 0;
     align-self: flex-end;
@@ -106,7 +104,7 @@
   .chatHeader {
     padding: 0.75rem 1rem;
   }
-  
+
   .chatHeader h1 {
     font-size: 1.25rem;
   }

@@ -1,8 +1,11 @@
 import { z } from 'zod'
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  NODE_ENV: z
+    .enum(['development', 'production', 'test'])
+    .default('development'),
   CLAUDE_API_KEY: z.string().min(1, 'Claude API key is required'),
+  CLAUDE_MODEL: z.string(),
   NEXT_PUBLIC_APP_URL: z.string().url().optional(),
   PORT: z.string().default('3000').transform(Number),
 })
@@ -15,7 +18,7 @@ function validateEnv(): Env {
   } catch (error) {
     if (error instanceof z.ZodError) {
       const missingVars = error.issues.map(
-        (issue) => `${issue.path.join('.')}: ${issue.message}`
+        issue => `${issue.path.join('.')}: ${issue.message}`
       )
       throw new Error(
         `Environment validation failed:\n${missingVars.join('\n')}`
@@ -47,7 +50,7 @@ export const config = {
 
   // Claude Configuration
   claude: {
-    model: 'claude-3-5-sonnet-20241022',
+    model: env.CLAUDE_MODEL,
     maxTokens: 4096,
     temperature: 0.7,
   },
